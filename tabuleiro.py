@@ -19,23 +19,23 @@ class tabuleiro:
         botãox = tk.Button(window)
         botãox.config( height = 10,width = 20)
         botãox.grid(row = botão.row,column = botão.column)
-        botãox.configure(bg = "white")
+        botãox.configure(bg = "gray")
         botõesx.append(botãox)
         a = Base.verifica_ganhador()
         if a == -1:
              botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column))
        
         if a == 1:
-                printar.configure(text="Jogador X ganhou!")
+                printar.configure(text="Jogador X ganhou!",font=("Helvetica",20))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
                 
         elif a == 0:
-                printar.configure(text="DEU VELHA")
+                printar.configure(text="DEU VELHA",font=("Helvetica",12))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
         if a == 2:
-                printar.configure(text="Jogador O ganhou!")
+                printar.configure(text="Jogador O ganhou!",font=("Helvetica",12))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
         elif a == 0:
@@ -44,10 +44,10 @@ class tabuleiro:
                 tabuleiro.tentar_novamente() 
                 
         if jogo.matriz[botão.row][botão.column] == -1:
-            botãox.configure(text="X")
+            botãox.configure(text="X",background="white",foreground="black")
 
         elif jogo.matriz[botão.row][botão.column]== 1:
-            botãox.configure(text="O")
+            botãox.configure(text="O",background="black",foreground="white")
 
     def rodar(i,n):
         Base.recebe_jogada(i,n)
