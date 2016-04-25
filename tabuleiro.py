@@ -17,7 +17,7 @@ class tabuleiro:
     def criar_tabuleiro(botão):
         printar = tk.Label(window)
         botãox = tk.Button(window)
-#        botãox.config( height = 10,width = 20)
+        botãox.config( height = 10,width = 20)
         botãox.grid(row = botão.row,column = botão.column)
         botãox.configure(bg = "gray")
         botõesx.append(botãox)
@@ -26,34 +26,28 @@ class tabuleiro:
              botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column))
        
         if a == 1:
-                printar.configure(text="Jogador X ganhou!",font=("Helvetica",11),background="white",foreground = "dark blue")
+                printar.configure(text="Jogador X ganhou!",font=("Helvetica",12))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
                 
         elif a == 0:
-                printar.configure(text="DEU VELHA",font=("Helvetica",15),background="black",foreground = "white")
+                printar.configure(text="DEU VELHA",font=("Helvetica",16))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
         if a == 2:
-                printar.configure(text="Jogador O ganhou!",font=("Helvetica",11),background="black",foreground = "orange")
+                printar.configure(text="Jogador O ganhou!",font=("Helvetica",12))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
         elif a == 0:
-                printar.configure(text="DEU VELHA",background="black",foreground = "white")
+                printar.configure(text="DEU VELHA")
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente() 
-            
-        if jogo.matriz[botão.row][botão.column] == 0 and jogo.turno == 1:
-            botãox.configure(text="x",font=("Helvetica",70),background="gray",foreground = "gray")
-            
-        if jogo.matriz[botão.row][botão.column] == 0 and jogo.turno == 2:
-            botãox.configure(text="o",font=("Helvetica",70),background="gray",foreground = "gray")
-                        
+                
         if jogo.matriz[botão.row][botão.column] == -1:
-            botãox.configure(text="x",font=("Helvetica",70),background="white",foreground="dark blue")
+            botãox.configure(text="X",background="white",foreground="black")
 
         elif jogo.matriz[botão.row][botão.column]== 1:
-            botãox.configure(text="o",font=("Helvetica",69),background="black",foreground="orange")
+            botãox.configure(text="O",background="black",foreground="white")
 
     def rodar(i,n):
         Base.recebe_jogada(i,n)
