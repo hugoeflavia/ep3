@@ -21,47 +21,45 @@ class tabuleiro:
         botãox.grid(row = botão.row,column = botão.column)
         botãox.configure(bg = "white")
         botõesx.append(botãox)
-        botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column))
         a = Base.verifica_ganhador()
-        if jogo.matriz[botão.row][botão.column] == -1:
-            botãox.configure(text="X")
-            if a == 1:
+        if a == -1:
+             botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column))
+       
+        if a == 1:
                 printar.configure(text="Jogador X ganhou!")
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
                 
-            elif a == 0:
+        elif a == 0:
                 printar.configure(text="DEU VELHA")
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
-           
-        elif jogo.matriz[botão.row][botão.column]== 1:
-            botãox.configure(text="O")
-            if a == 2:
+        if a == 2:
                 printar.configure(text="Jogador O ganhou!")
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
-            elif a == 0:
+        elif a == 0:
                 printar.configure(text="DEU VELHA")
                 printar.grid(row=1,column=1)
-                tabuleiro.tentar_novamente()
-                      
+                tabuleiro.tentar_novamente() 
+                
+        if jogo.matriz[botão.row][botão.column] == -1:
+            botãox.configure(text="X")
+
+        elif jogo.matriz[botão.row][botão.column]== 1:
+            botãox.configure(text="O")
+
     def rodar(i,n):
         Base.recebe_jogada(i,n)
-        a = Base.verifica_ganhador()
-        if not a == -1:
-            for p in botões:
-                tabuleiro.criar_tabuleiro(p)
-        if a == -1:
-            for p in botões:
-                tabuleiro.criar_tabuleiro(p)
+        for p in botões:
+            tabuleiro.criar_tabuleiro(p)
                 
-            if jogo.turno == 2:
-                label.configure(text="VEZ DO JOGADOR O")
-                label.grid(row=3,column=1)
-            elif jogo.turno == 1:
-                label.configure(text="VEZ DO JOGADOR X")
-                label.grid(row=3,column=1)
+        if jogo.turno == 2:
+            label.configure(text="VEZ DO JOGADOR O")
+            label.grid(row=3,column=1)
+        elif jogo.turno == 1:
+            label.configure(text="VEZ DO JOGADOR X")
+            label.grid(row=3,column=1)
                                 
     def tentar_novamente():
         tente = tk.Button(window)

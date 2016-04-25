@@ -20,14 +20,17 @@ class Base:
         x = 0
         for a in jogo.matriz[i]:
             x += a
+            print ("a =", a)
+        print ("linha ", x)
         return x
         
     def check_coluna(n):
         x = 0
         for a in jogo.matriz[:,n]:
             x += a
+        print ("coluna" , x)    
         return x
-    
+        
     def check_diagonal(m):
         x = 0
         if m == 1:
@@ -48,8 +51,10 @@ class Base:
             n = Base.check_coluna(l)
             m = Base.check_diagonal(l)
             if i == 3 or n == 3 or m == 3:
+                print ("O ganhou")
                 return 2
             if i == -3 or n == -3 or m == -3:
+                print ("X ganhou")
                 return 1
         if jogo.vezes == 10:
             return 0
@@ -65,3 +70,4 @@ matriz =np.zeros([3,3])
 
 jogo = Base(matriz,1,1)
 
+Base.verifica_ganhador()
