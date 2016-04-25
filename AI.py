@@ -12,21 +12,21 @@ class jokenpoh:
     def jokenpoh(x):
         y = random.randint(1,3)
         if y == 1:
-            comp = "pedra"
+            comp = "Pedra"
         elif y == 2:
-            comp = "papel"
+            comp = "Papel"
         else:
-            comp = "tesoura"
+            comp = "Tesoura"
             
         print ("random:",y)
-        if x == y:
-            return -1,"empate"
-        elif x == 1:
+        if x == comp:
+            return -1,x
+        elif x == "Pedra":
             if y == 2:
                 return 0,comp
             if y == 3:
                 return 1,comp
-        elif x == 2:
+        elif x == "Papel":
             if y == 1:
                 return 1,comp
             if y == 3:
@@ -36,6 +36,8 @@ class jokenpoh:
                 return 0,comp
             if y == 2:
                 return 1,comp
+a = jokenpoh.jokenpoh(1)
+print(a)
 
 class ia_easy:     
     def cpu_play():
