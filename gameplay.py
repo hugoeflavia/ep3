@@ -45,6 +45,32 @@ class Base:
                 x += i
         return x
         
+    def verifica_ganhador():
+        for l in range (0,3):
+            i= 0
+            n = 0
+            m = 0
+            i = Base.check_linha(l)
+            n = Base.check_coluna(l)
+            m = Base.check_diagonal(l)
+            if i == 3 or n == 3 or m == 3:
+                print("O ganhou")
+                return 2
+            if i == -3 or n == -3 or m == -3:
+                print ("X ganhou")
+                return 1
+        if jogo.vezes == 10:
+            print("velha")
+            return 0
+        return -1
+    def reset():
+        for i in range (3):
+            for n in range (3):
+                 print (i)
+                 print (n)
+                 jogo.matriz[i][n] = 0
+                 
+    
 
         
 matriz =np.zeros([3,3])
