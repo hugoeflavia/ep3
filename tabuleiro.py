@@ -1,12 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Apr 22 15:07:53 2016
-
-@author: Hugo
-"""
-
-
 import tkinter as tk
+from gameplay import *
+
 
 class tabuleiro:
     def __init__(self,height,width,row,column):
@@ -19,13 +13,51 @@ class tabuleiro:
         botãox = tk.Button(window)
         botãox.config( height = 10,width = 20)
         botãox.grid(row = botão.row,column = botão.column)
+        botãox.configure(bg = "white")
         botõesx.append(botãox)
+        botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column,jogo.turno))
+        if jogo.matriz[botão.row][botão.column] == -1:
+            botãox.configure(text="X")
+           
+        elif jogo.matriz[botão.row][botão.column]== 1:
+            botãox.configure(text="O")
+            
+    def rodar(i,n,c):
+        Base.recebe_jogada(i,n)
+        printar = tk.Label(window)
+        a = Base.verifica_ganhador()
+        if not a == -1:
+#            
+            if a == 0:
+                printar.configure(text=" DEU VELHA")
+                printar.grid(row=1,column=1)
+            elif a == 1:
+                for p in botões:
+                    tabuleiro.criar_tabuleiro(p)
+                printar.configure(text=" Jogador X ganhou")
+                printar.grid(row=1,column=1)
+                
+              
+            else:
+                printar.configure(text="Jogador Y ganhou")
+                printar.grid(row=1,column=1)
        
-    
-        
-window = tk.Tk()        
+        if a == -1:
+            for p in botões:
+                tabuleiro.criar_tabuleiro(p)
+                
+            if c == 1:
+                label.configure(text="VEZ DO JOGADOR O")
+                label.grid(row=3,column=1)
+            elif c == 2:
+                label.configure(text="VEZ DO JOGADOR X")
+                label.grid(row=3,column=1)
+     
+        window.mainloop()
 
-      
+window = tk.Tk() 
+label =tk.Label(window)       
+
 botão1 = tabuleiro(10,20,0,0)
 botão2 = tabuleiro(10,20,0,1)
 botão3 = tabuleiro(10,20,0,2)
@@ -37,48 +69,18 @@ botão8= tabuleiro(10,20,2,1)
 botão9 = tabuleiro(10,20,2,2)
  
 botões = [botão1,botão2,botão3,botão4,botão5,botão6,botão7,botão8,botão9]
-botõesx= []  
+botõesx= []
 
+jogo_is_on = 1
 
-for i in botões:
-    tabuleiro.criar_tabuleiro(i)
-    
-def E0():
-    botõesx[0].configure(text="x")    
-botõesx[0].configure(command=E0)
-
-def E1():
-    botõesx[1].configure(text="x")    
-botõesx[1].configure(command=E1)
-
-def E2():
-    botõesx[2].configure(text="x")    
-botõesx[2].configure(command=E2)
-
-def E3():
-    botõesx[3].configure(text="x")    
-botõesx[3].configure(command=E3)
-
-def E4():
-    botõesx[4].configure(text="x")    
-botõesx[4].configure(command=E4)
-
-def E5():
-    botõesx[5].configure(text="x")    
-botõesx[5].configure(command=E5)
-
-def E6():
-    botõesx[6].configure(text="x")    
-botõesx[6].configure(command=E6)
-
-def E7():
-    botõesx[7].configure(text="x")    
-botõesx[7].configure(command=E7)
-
-def E8():
-    botõesx[8].configure(text="x")    
-botõesx[8].configure(command=E8)
-    
-        
+label = tk.Label(window)   
 window.title("Jogo da Velha")
+    
+for p in botões:
+    tabuleiro.criar_tabuleiro(p)
+
+label =tk.Label(window)
+label.configure(text="VEZ DO JOGADOR X")
+label.grid(row=3,column=1)
+                
 window.mainloop()
