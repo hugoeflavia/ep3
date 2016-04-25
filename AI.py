@@ -36,8 +36,6 @@ class jokenpoh:
                 return 0,comp
             if y == 2:
                 return 1,comp
-a = jokenpoh.jokenpoh(1)
-print(a)
 
 class ia_easy:     
     def cpu_play():
