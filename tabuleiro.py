@@ -26,12 +26,12 @@ class tabuleiro:
              botãox.configure(command= lambda: tabuleiro.rodar(botão.row,botão.column))
        
         if a == 1:
-                printar.configure(text="Jogador X ganhou!",font=("Helvetica",20))
+                printar.configure(text="Jogador X ganhou!",font=("Helvetica",12))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
                 
         elif a == 0:
-                printar.configure(text="DEU VELHA",font=("Helvetica",12))
+                printar.configure(text="DEU VELHA",font=("Helvetica",16))
                 printar.grid(row=1,column=1)
                 tabuleiro.tentar_novamente()
         if a == 2:
