@@ -10,25 +10,25 @@ import random
 
 class jokenpoh:
     def jokenpoh(x):
-        y = random.randint(1,4)
+        y = random.randint(1,3)
+        print ("random:",y)
         if x == y:
-            return -1
+            return -1,y
         elif x == 1:
             if y == 2:
-                return 0
+                return 0,y
             if y == 3:
-                return 1
+                return 1,y
         elif x == 2:
             if y == 1:
-                return 1
+                return 1,y
             if y == 3:
-                return 0
+                return 0,y
         else:
             if y == 1:
-                return 0
+                return 0,y
             if y == 2:
-                return 1
-        
+                return 1,y
 
 class ia_easy:     
     def cpu_play():
