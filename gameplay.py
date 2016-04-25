@@ -22,4 +22,72 @@ class Base:
                 jogo.matriz[i][n] = 1
                 jogo.turno -= 1
             
+    def check_linha(i):
+        x = 0
+        for a in jogo.matriz[i]:
+            x += a
+        return x
+        
+    def check_coluna(n):
+        x = 0
+        for a in jogo.matriz[:,n]:
+            x += a
+        return x
+    
+    def check_diagonal(m):
+        x = 0
+        if m == 1:
+            for i in np.diag(jogo.matriz):
+                x += i
+        if m == 2:
+            matriz_flipped = np.fliplr(jogo.matriz)
+            for i in np.diag(matriz_flipped):
+                x += i
+        return x
+        
 
+        
+matriz =np.zeros([3,3])
+
+#exemple 1:
+
+#matriz[0][2] = 1
+#matriz[1][1] = 1
+#matriz[2][0] = 1
+
+#exemple 2:
+
+#matriz[0][2] = -1
+#matriz[1][1] = -1
+#matriz[2][0] = -1
+
+#exemple 3:
+
+matriz[0][0] = 0
+matriz[0][1] = 0
+matriz[0][2] = 0
+
+matriz[1][0] = 0
+matriz[1][1] = 0
+matriz[1][2] = 0
+
+matriz[2][0] = 0
+matriz[2][1] = 0
+matriz[2][2] = 0
+
+
+jogo = Base(matriz,1,1)
+
+while True:
+    x = int(input("cordenadas x de X"))
+    y = int(input("cordenada y de X"))
+    
+    Base.recebe_jogada(x,y)
+    Base.verifica_ganhador()
+    
+    x = int(input("cordenadas x de O"))
+    y = int(input("cordenada y de O"))
+    
+    Base.recebe_jogada(x,y)
+    Base.verifica_ganhador()
+    
